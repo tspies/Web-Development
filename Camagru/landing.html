@@ -1,0 +1,77 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Landing</title>
+	<style>
+		*
+		{
+			margin: 0;
+			padding: 0;	
+		}
+		.landing
+		{
+			display: grid;
+			height: 95%;
+			margin: 0.5%;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto 30% 1fr auto;
+			grid-template-areas: 
+			"header header"
+			"sidebar sidebar"
+			"content content"
+			"footer footer";
+  			background-color: #2196F3;
+			grid-gap: 1vmax;
+		}
+		.landing > div
+		{
+			background-color: rgba(255, 255, 255, 0.8);
+  			text-align: center;
+  			font-size: 3vmax;
+		}
+		.header
+		{
+			grid-area: header;
+		}
+		.sidebar
+		{
+			grid-area: sidebar;
+		}
+		.content
+		{
+			grid-area: content;
+		}
+		.footer
+		{
+			grid-area: footer;
+		}
+		@media screen and (min-width: 736px)
+		{
+			.landing
+			{
+				display: grid;
+				margin: 0.5%;
+				height: 95%;
+				grid-template-columns: 15% 1fr 1fr 1fr 15%;
+				grid-template-rows: auto 1fr auto;
+				grid-template-areas: 
+				"header header header header header"
+				". content content sidebar ."
+				"footer footer footer footer footer";
+				background-color: #2196F3;
+				padding: 0.5%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="landing">
+		<div class="header">Header</div>
+		<div class="sidebar">Sidebar</div>
+		<div class="content">Content</div>
+		<div class="footer">Footer</div>
+	</div>	
+</body>
+</html>
