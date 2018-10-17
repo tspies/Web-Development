@@ -1,0 +1,94 @@
+        *
+		{
+			margin: 0;
+			padding: 0;
+			background-color: #fafafa;
+        }
+        a
+        {
+            background-color: transparent;
+        }
+		.landing
+		{
+			display: grid;
+			height: 95%;
+			margin: 0.5%;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto 30% 1fr auto;
+			grid-template-areas: 
+			"header header"
+			"sidebar sidebar"
+			"content content"
+			"footer footer";
+			grid-gap: 1vmax;
+		}
+		.landing > div
+		{
+			background-color: #e3e3e3;
+  			text-align: center;
+  			font-size: 3vmax;
+			  border-radius: 6px;
+		}
+		.header
+		{
+            grid-area: header;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 10% 1fr auto auto;
+            grid-template-areas: "home . notification profile";
+            justify-content: center;
+		}
+		.header > div
+		{
+			background-color: #e3e3e3;
+            border-radius: 6px;
+        }
+		.sidebar
+		{
+			grid-area: sidebar;
+		}
+		.content
+		{
+			grid-area: content;
+		}
+		.footer
+		{
+			grid-area: footer;
+        }
+        .home
+        {
+            grid-area: home;
+            margin-left: -60%;
+        }
+        .notification
+        {
+            height: 70px;
+            width: 70px;
+            margin-top: 0.75%;
+            margin-right: -96%;
+            grid-area: notification;
+        }
+        .profile
+        {
+            grid-area: profile;
+            height: 80px;
+            width: 80px;
+            margin-top: 10%;
+            margin-right: 15%;
+        }
+		@media screen and (min-width: 736px)
+		{
+			.landing
+			{
+				display: grid;
+				margin: 0.5%;
+				height: 95%;
+				grid-template-columns: 15% 1fr 1fr 1fr 15%;
+				grid-template-rows: auto 1fr auto;
+				grid-template-areas: 
+				"header header header header header"
+				". content content sidebar ."
+				"footer footer footer footer footer";
+				padding: 0.5%;
+			}
+		}
