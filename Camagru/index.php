@@ -54,6 +54,12 @@
 	</style>
 </head>
 <body>
+	<?php
+		session_start();
+		if (isset($_SESSION['username']))
+			header('Location: home.php');
+		session_destroy();
+	?>
 	<div class="welcome">
 		<div class="greeting">
 			<h1>WELCOME TO<br><div class="supergram">SUPERGRAM<div></h1>
