@@ -57,13 +57,12 @@
 	<?php
 		session_start();
 		if (isset($_SESSION['username']))
-			header('Location: home.php');
-		session_destroy();
+			header('Location: landing.php');
 	?>
 	<div class="welcome">
 		<div class="greeting">
 			<h1>WELCOME TO<br><div class="supergram">SUPERGRAM<div></h1>
-			<a href="login.php">
+			<a href="sign_up.php">
 			<div class="login_button"><div class="pee">Get Started</div><div>
 			</a>
 	</div>

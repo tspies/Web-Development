@@ -9,7 +9,7 @@
 		<?php
 		?>
 		<div>
-			<form class="login" action="profile.html">
+			<form class="login" action="profile.php">
 			<div class="title">
 				<div style="margin-top: 1.5%; font-size: 2.2vmax;">Login</div>
 			</div>

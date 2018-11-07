@@ -11,13 +11,13 @@
 <body>
 	<div class="landing">
 		<div class="header">
-			<a href="landing.html">
+			<a href="landing.php">
 				<img src="img/home.png" style="background-color: transparent" class="home">
 			</a>
-			<a href="notifications.html">
+			<a href="notifications.php">
 				<img src="img/message.png" style="background-color: transparent" class="notification">
 			</a>
-			<a href="profile.html">
+			<a href="profile.php">
 				<img src="img/profile.png" style="background-color: transparent" class="profile">
 			</a>
 		</div>
