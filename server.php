@@ -14,7 +14,7 @@
             $password = $_POST['password'];
             $con_password = $_POST['confirm_password'];
 
-            // C hecking for empty fields - pushing error message to $errors array
+            // Checking for empty fields - pushing error message to $errors array
             if (empty($username))
                 array_push($errors, "Username cannot be empty");
             if (empty($email) || (!strstr($email, "@")))
@@ -25,8 +25,8 @@
                 array_push($errors, "Passwords do not match");
 
             // Checking is user already exists
-            $query = $dbc->prepare("SELECT * FROM user_data WHERE uname = :username OR email = :mail");
-            $query = $query->execute(["uname"=>$username, "mail"=>$email]);
+            $query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname OR email = :mail");
+            $query->execute(["uname"=>$username, "mail"=>$email]);
             $rows = $query->fetchAll();
             if (sizeof($rows) >= 1)
                 array_push($errors, "Username or Email already exists");
@@ -40,12 +40,17 @@
                 $link = "http://localhost:8080/WebDev/Camagru/email_auth.php?token=".$token;
                 $query = "INSERT INTO camagru.user_data (username, `password`, email)
                             VALUES ('$username', '$email', '$password')";
-                $connect->exec($query);
+				$connect->exec($query);
+				
+				$email_msg = "Please follow the link bellow\nto verify your account\n$link";
+				$email_msg = wordwrap($email_msg, 70);
+				mail("$email", "SuperGram Verification", $email_msg);
+				header('Location: login.php');
             }
         }
     }
     catch(PDOException $err)
     {
-        echo '$';
+        echo $err->getMessage();
     }
 ?>
