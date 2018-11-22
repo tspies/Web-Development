@@ -1,5 +1,7 @@
 <?php
+	include('server.php');
 ?>
+<html>
 <head>
 		<title>Sign Up</title>
 		<style>
