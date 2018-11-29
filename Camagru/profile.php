@@ -22,7 +22,25 @@
             </a>
         </div>
         <div class="sidebar"></div>
-        <div class="content">Content</div>
+        <div class="content">
+            <div class="video_screen">
+                <video autoplay id="video_stream"></video>
+                <button></button>
+            </div>
+            <script>
+                var video = document.getElementById('video_stream'),
+                var canvas = document.getElementById();
+                if (navigator.mediaDevices.getUserMedia)
+                {
+                    navigator.mediaDevices.getUserMedia({video: true})
+                    .then(function(stream)
+                    {
+                        video.srcObject = stream;
+                        return video.play();
+                    })
+                }
+            </script>
+        </div>
         <div class="footer">Footer</div>
     </div>	
 </body>

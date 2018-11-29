@@ -48,7 +48,7 @@
 				
 				$email_msg = "Please follow the link bellow\nto verify your account\n$link";
 				$email_msg = wordwrap($email_msg, 70, "\n");
-				mail("jnspies333@gmail.com", "SuperGram Verification", "Not a blank message");
+				mail("$email", "SuperGram Verification", "$email_msg");
                 header('Location: login.php');
             }
             else
