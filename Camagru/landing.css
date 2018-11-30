@@ -75,7 +75,31 @@
             width: 80px;
             margin-top: 10%;
             margin-right: 15%;
-        }
+		}
+		.video_screen
+		{
+			background-color: #a39de0;
+			width: 40%;
+			background-color:#ccc;
+			border: 10px solid #ddd;
+			margin:0 auto;
+		}
+		video
+		{
+			transform: rotateY(180deg);
+			-webkit-transform:rotateY(180deg);
+			-moz-transform:rotateY(180deg);
+		}
+		.video_button
+		{
+			display: block;
+			margin: 10px 0;
+			padding: 10px 20px;
+			background-color: #a39de0;
+			color: #fff;
+			text-align: center;
+			text-decoration: none;
+		}
 		@media screen and (min-width: 736px)
 		{
 			.landing

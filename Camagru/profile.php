@@ -24,21 +24,32 @@
         <div class="sidebar"></div>
         <div class="content">
             <div class="video_screen">
-                <video autoplay id="video_stream"></video>
-                <button></button>
+                <video id="video_stream" width="30%" height="30%"></video>
+                <a href="#" id="capture" class="video_button">Take Photo</a>
+                <canvas id="canvas" width="30%" hight="30%"></canvas>
+                <img id="phto" src="" alt="Your Photo">
             </div>
-            <script>
-                var video = document.getElementById('video_stream'),
-                var canvas = document.getElementById();
-                if (navigator.mediaDevices.getUserMedia)
-                {
-                    navigator.mediaDevices.getUserMedia({video: true})
-                    .then(function(stream)
-                    {
-                        video.srcObject = stream;
-                        return video.play();
-                    })
-                }
+            <script src="script.js">
+                (function(){
+                    var video = document.getElementById('video_stream'),
+                        canvas = document.getElementById('canvas'),
+                        context = canvas.getContext('2d'),
+                        photo = document.getElementById('photo'),
+                        vendorURL = window.URL || window.webkitURL;
+
+                    navigator.getMedia =    navigator.getUserMedia ||
+                                            navigator.webkitGetUserMedia ||
+                                            navigator.mozGetUserMedia ||
+                                            navigator.msGetUserMedia;
+                    navigator.getMedia({
+                        video: true
+                    }, function(stream){
+                        video.src = vendorURL.createObjectURL(stream);
+                        video.play();
+                    }, function(error){
+
+                    });
+                })();
             </script>
         </div>
         <div class="footer">Footer</div>
