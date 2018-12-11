@@ -7,7 +7,11 @@
         a
         {
             background-color: transparent;
-        }
+		}
+		.content
+		{
+			align-content: center;
+		}
 		.landing
 		{
 			display: grid;
@@ -24,7 +28,7 @@
 		}
 		.landing > div
 		{
-			background-color: #e3e3e3;
+			background-color: #a39de0;
   			text-align: center;
   			font-size: 3vmax;
 			  border-radius: 6px;
@@ -40,7 +44,7 @@
 		}
 		.header > div
 		{
-			background-color: #e3e3e3;
+			background-color: #a39de0;
             border-radius: 6px;
         }
 		.sidebar
@@ -96,7 +100,6 @@
 			margin: 10px 0;
 			padding: 10px 20px;
 			background-color: #a39de0;
-			color: #fff;
 			text-align: center;
 			text-decoration: none;
 		}

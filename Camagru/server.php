@@ -76,10 +76,14 @@
             {
                 // Check is user exists in database
                 $query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND `password` = :log_pass");
-                $query->execute(["uname"=>$log_name, "log_pass"=>$log_pass]);
+                $query->execute(["uname"=>$log_name, "log_pass"=>hash('whirlpool', str_rot13($log_pass))]);
                 $rows = $query->fetchAll();
-                if ($rows >= 1)
+                if (count($rows) >= 1)
+                {
+                    $_SESSION['username'] = $log_name;
+                    $_SESSION['id'] = $rows[0]['id'];
                     header('Location: index.php');
+                }
             }
         }
     }

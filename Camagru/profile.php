@@ -23,34 +23,34 @@
         </div>
         <div class="sidebar"></div>
         <div class="content">
-            <div class="video_screen">
-                <video id="video_stream" width="30%" height="30%"></video>
-                <a href="#" id="capture" class="video_button">Take Photo</a>
-                <canvas id="canvas" width="30%" hight="30%"></canvas>
-                <img id="phto" src="" alt="Your Photo">
-            </div>
-            <script src="script.js">
-                (function(){
-                    var video = document.getElementById('video_stream'),
-                        canvas = document.getElementById('canvas'),
-                        context = canvas.getContext('2d'),
-                        photo = document.getElementById('photo'),
-                        vendorURL = window.URL || window.webkitURL;
+                <video id="player" autoplay></video>
+                <button id="capture" class="video_button">Capture</button>
+                <canvas id="canvas" width=320 height=240></canvas>
+                <script>
+                    const player = document.getElementById('player');
+                    const canvas = document.getElementById('canvas');
+                    const context = canvas.getContext('2d');
+                    const captureButton = document.getElementById('capture');
 
-                    navigator.getMedia =    navigator.getUserMedia ||
-                                            navigator.webkitGetUserMedia ||
-                                            navigator.mozGetUserMedia ||
-                                            navigator.msGetUserMedia;
-                    navigator.getMedia({
-                        video: true
-                    }, function(stream){
-                        video.src = vendorURL.createObjectURL(stream);
-                        video.play();
-                    }, function(error){
+                    const constraints = {
+                        video: true,
+                    };
 
+                    captureButton.addEventListener('click', () => {
+                        // Draw the video frame to the canvas.
+                        context.translate(canvas.width, 0);
+                        context.scale(-1, 1);
+                        context.save();
+                        context.restore();
+                        context.drawImage(player, 0, 0, canvas.width, canvas.height);
                     });
-                })();
-            </script>
+
+                    // Attach the video stream to the video element and autoplay.
+                    navigator.mediaDevices.getUserMedia(constraints)
+                        .then((stream) => {
+                        player.srcObject = stream;
+                        });
+                </script>
         </div>
         <div class="footer">Footer</div>
     </div>	

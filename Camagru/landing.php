@@ -1,3 +1,4 @@
+<?php require_once('server.php');?>
 <!DOCTYPE <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +22,12 @@
 				<img src="img/profile.png" style="background-color: transparent" class="profile">
 			</a>
 		</div>
+		<p><?php if (isset($_SESSION['username']))
+						echo $_SESSION['username'];
+						print_r($_SESSION);
+						?>
+						</p>
+		<a href="log_out.php">LOG OUT</a>
 		<div class="sidebar"></div>
 		<div class="content">Content</div>
 		<div class="footer">Footer</div>

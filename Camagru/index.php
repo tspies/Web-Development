@@ -1,4 +1,9 @@
 
+<?php
+		session_start();
+		if (isset($_SESSION['username']))
+			header('Location: landing.php');
+?>
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -54,11 +59,7 @@
 	</style>
 </head>
 <body>
-	<?php
-		session_start();
-		if (isset($_SESSION['username']))
-			header('Location: landing.php');
-	?>
+	
 	<div class="welcome">
 		<div class="greeting">
 			<h1>WELCOME TO<br><div class="supergram">SUPERGRAM<div></h1>
