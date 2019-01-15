@@ -5,7 +5,9 @@
     ini_set('display_startup_errors', 1);
     $username= "";
     $email = "";
-    $errors = array();
+	$errors = array();
+	$special = '/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/';
+
 
     try
     {
@@ -15,7 +17,10 @@
             $username = $_POST['username'];
             $email = $_POST['email'];
             $password = $_POST['password'];
-            $con_password = $_POST['confirm_password'];
+			$con_password = $_POST['confirm_password'];
+			$Notifications = 0;
+			if (isset($_POST['Notifications']))
+				$Notifications = 1;
 
             // Checking for empty fields - pushing error message to $errors array
             if (empty($username))
@@ -23,7 +28,15 @@
             if (empty($email) || (!strstr($email, "@")))
                 array_push($errors, "Email is not valid");
             if (empty($password))
-                array_push($errors, "Password connot be empty");
+				array_push($errors, "Password connot be empty");
+				if (!preg_match('/[A-Z]/', $password))
+					array_push($errors, "Password must contain atleast one uppercase letter (A - Z)");
+				if (!preg_match('/[0-9]/', $password))
+					array_push($errors, "Password must contain atleast one numerical digit (0 - 9)");
+				if (!preg_match('/[a-z]/', $password))
+					array_push($errors, "Password must contain atleast one lower case letter (a - z)");
+				if (!preg_match($special, $password))
+					array_push($errors, "Password must contain atleast one special character ('/[(~`!@#$%^&*()+=_-{}[]\|:;”’?/<>,.)");
             if (empty($con_password))
                 array_push($errors, "Passwords do not match");
 
@@ -32,7 +45,7 @@
             $query->execute(["uname"=>$username, "mail"=>$email]);
             $rows = $query->fetchAll();
             if (sizeof($rows) >= 1)
-                array_push($errors, "Username or Email already exists");
+				array_push($errors, "Username or Email already exists");
             
             // Add user to database when no errors pushed to array
             if (count($errors) == 0)
@@ -42,8 +55,8 @@
                 echo $password;
                 $token = hash('whirlpool', str_rot13($username));
                 $link = "http://localhost:8080/WebDev/Camagru/email_auth.php?token=".$token;
-                $query = "INSERT INTO camagru.user_data (username, email, `password`)
-                            VALUES ('$username', '$email', '$password')";
+                $query = "INSERT INTO camagru.user_data (username, email, `password`, notifications)
+                            VALUES ('$username', '$email', '$password', '$Notifications')";
 				$dbc->exec($query);
 				
 				$email_msg = "Please follow the link bellow\nto verify your account\n$link";
@@ -70,7 +83,14 @@
             if (empty($log_name))
                 array_push($errors, "Username cannot be empty");
             if (empty($log_pass))
-                array_push($errors, "Username cannot be empty");
+				array_push($errors, "Username cannot be empty");
+
+			// Checking for Verification
+			$query = $dbc->prepare("SELECT Verfiied FROM camagru.user_data WHERE username = :uname AND Verified IS NOT NULL");
+			$query->execute(["uname"=>$log_name]);
+			$rows = $query->fetchAll();
+			if (!(count($rows)) >= 1)
+				array_push($errors, "User is not verified");
 
             if (count($errors) == 0)
             {
@@ -80,6 +100,7 @@
                 $rows = $query->fetchAll();
                 if (count($rows) >= 1)
                 {
+					$execute(["uname"=>$log_name]);
                     $_SESSION['username'] = $log_name;
                     $_SESSION['id'] = $rows[0]['id'];
                     header('Location: index.php');

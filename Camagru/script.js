@@ -1,20 +1,22 @@
-(function(){
-    var video = document.getElementById('video_stream'),
-        canvas = document.getElementById('canvas'),
-        context = canvas.getContext('2d'),
-        photo = document.getElementById('photo'),
-        vendorURL = window.URL || window.webkitURL;
 
-    navigator.getMedia =    navigator.getUserMedia ||
-                            navigator.webkitGetUserMedia ||
-                            navigator.mozGetUserMedia ||
-                            navigator.msGetUserMedia;
-    navigator.getMedia({
-        video: true
-    }, function(stream){
-        video.src = vendorURL.createObjectURL(stream);
-        video.play();
-    }, function(error){
+const player = document.getElementById('player');
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+const captureButton = document.getElementById('capture');
 
-    });
-})();
+const constraints = {
+	video: true,
+};
+
+navigator.mediaDevices.getUserMedia(constraints)
+.then((stream) => {
+player.srcObject = stream;
+});
+var video = document.getElementsByTagName("video")[0];
+video.height = 280;
+video.width = 380;
+
+function snapshot()
+{
+	context.drawImage(player, 0, 0, canvas.width, canvas.height);
+};

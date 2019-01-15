@@ -3,15 +3,17 @@
 			margin: 0;
 			padding: 0;
 			background-color: #fafafa;
-        }
-        a
-        {
-            background-color: transparent;
 		}
-		.content
-		{
-			align-content: center;
-		}
+		button {
+			padding: 0;
+			border: none;
+			font: inherit;
+			color: inherit;
+			background-color: transparent;
+			/* show a hand cursor on hover; some argue that we
+			should keep the default arrow cursor for buttons */
+			cursor: pointer;
+		  }
 		.landing
 		{
 			display: grid;
@@ -26,13 +28,6 @@
 			"footer footer";
 			grid-gap: 1vmax;
 		}
-		.landing > div
-		{
-			background-color: #a39de0;
-  			text-align: center;
-  			font-size: 3vmax;
-			  border-radius: 6px;
-		}
 		.header
 		{
             grid-area: header;
@@ -42,18 +37,13 @@
             grid-template-areas: "home . notification profile";
             justify-content: center;
 		}
-		.header > div
-		{
-			background-color: #a39de0;
-            border-radius: 6px;
-        }
 		.sidebar
 		{
 			grid-area: sidebar;
 		}
 		.content
 		{
-			grid-area: content;
+			align-content: center;
 		}
 		.footer
 		{
@@ -79,29 +69,6 @@
             width: 80px;
             margin-top: 10%;
             margin-right: 15%;
-		}
-		.video_screen
-		{
-			background-color: #a39de0;
-			width: 40%;
-			background-color:#ccc;
-			border: 10px solid #ddd;
-			margin:0 auto;
-		}
-		video
-		{
-			transform: rotateY(180deg);
-			-webkit-transform:rotateY(180deg);
-			-moz-transform:rotateY(180deg);
-		}
-		.video_button
-		{
-			display: block;
-			margin: 10px 0;
-			padding: 10px 20px;
-			background-color: #a39de0;
-			text-align: center;
-			text-decoration: none;
 		}
 		@media screen and (min-width: 736px)
 		{

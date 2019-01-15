@@ -1,5 +1,5 @@
 <?php include('server.php'); ?>
-<!DOCTYPE html>]
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Sign Up</title>
@@ -22,6 +22,7 @@
 				<input class="sign_up_input" type="password" placeholder="Password" name="password"/>
 				<input class="sign_up_input" type="password" placeholder="Confirm Password" name="confirm_password"/>
 				<input class="login_button" type="submit" name="sign_up" value="Go!"/>
+				<input type="checkbox" name="Notifications" checked/><a> Sign me up for notifications via email</a>
 				<div class="new_user" style="margin-top: 0.5%"><a href="login.php">Already a user? - Login</a></div>
 			</form>
 		</div>
