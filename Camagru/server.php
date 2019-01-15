@@ -85,26 +85,32 @@
             if (empty($log_pass))
 				array_push($errors, "Username cannot be empty");
 
-			// Checking for Verification
-			$query = $dbc->prepare("SELECT Verfiied FROM camagru.user_data WHERE username = :uname AND Verified IS NOT NULL");
-			$query->execute(["uname"=>$log_name]);
+			// Check is user exists in database
+			$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND `password` = :log_pass");
+			$query->execute(["uname"=>$log_name, "log_pass"=>hash('whirlpool', str_rot13($log_pass))]);
 			$rows = $query->fetchAll();
-			if (!(count($rows)) >= 1)
-				array_push($errors, "User is not verified");
+			if (sizeof($rows) >= 1)
+			{
+				// Checking for Verification
+				$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND verified IS NOT NULL");
+				$query->execute(["uname"=>$log_name]);
+				$rows = $query->fetchAll();
+				if (!(sizeof($rows)) >= 1)
+					array_push($errors, "User is not verified");
 
+			}
+			else
+				array_push($errors, "Username or Password incorrect");
             if (count($errors) == 0)
             {
-                // Check is user exists in database
-                $query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND `password` = :log_pass");
-                $query->execute(["uname"=>$log_name, "log_pass"=>hash('whirlpool', str_rot13($log_pass))]);
-                $rows = $query->fetchAll();
-                if (count($rows) >= 1)
-                {
-					$execute(["uname"=>$log_name]);
                     $_SESSION['username'] = $log_name;
                     $_SESSION['id'] = $rows[0]['id'];
                     header('Location: index.php');
-                }
+			}
+			else
+            {
+                foreach ($errors as $e)
+                    echo $e . "\n";
             }
         }
     }
