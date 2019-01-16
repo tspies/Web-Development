@@ -11,7 +11,8 @@
 
     try
     {
-        require('connection.php');
+		require('connection.php');
+		// Sign Up
         if (isset($_POST['sign_up']))
         {
             $username = $_POST['username'];
@@ -55,8 +56,8 @@
                 echo $password;
                 $token = hash('whirlpool', str_rot13($username));
                 $link = "http://localhost:8080/WebDev/Camagru/email_auth.php?token=".$token;
-                $query = "INSERT INTO camagru.user_data (username, email, `password`, notifications)
-                            VALUES ('$username', '$email', '$password', '$Notifications')";
+                $query = "INSERT INTO camagru.user_data (username, email, `password`, notifications, token)
+                            VALUES ('$username', '$email', '$password', '$Notifications', '$token')";
 				$dbc->exec($query);
 				
 				$email_msg = "Please follow the link bellow\nto verify your account\n$link";
@@ -69,7 +70,8 @@
                 foreach ($errors as $e)
                     echo $e . "\n";
             }
-        }
+		}
+		// Login
         if (isset($_POST['login']))
         {
             require('connection.php');
@@ -111,11 +113,72 @@
             {
                 foreach ($errors as $e)
                     echo $e . "\n";
-            }
-        }
+			}
+		}
+		// Reset Password
+		if (isset($_POST['forgot_password']))
+		{
+			$errors = array();
+
+			// Checking for existing email in DB
+			require('connection.php');
+			$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE email = :email");
+			$query->execute(["email"=>$_POST['email_reset']]);
+			$rows = $query->fetchAll();
+			if (sizeof($rows) >= 1)
+			{
+				//Generating Random Token
+				$raw_string = rand(10, 100);
+				$reset_token = hash('whirlpool', str_rot13($raw_string));
+				$link = "http://localhost:8080/WebDev/Camagru/reset_password.php?rest_token=".$reset_token;
+
+				// Update database with new token
+				$query = $dbc->prepare("UPDATE camagru.user_data SET token = :new_token");
+				$query->execute(["new_token"=>$reset_token]);
+
+				// Send reset email
+				$email_msg = "Please follow the link bellow\nto reset your password.\n$link";
+				$email_msg = wordwrap($email_msg, 70, "\n");
+				mail($_POST['email_reset'], "SuperGram Password reset", "$email_msg");
+			}
+			else
+			{
+				echo "That Username/Email does not exist";
+			}
+		}
+		// Reset Password Authentication
+		if (isset($_POST['change_password']))                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+		{
+			$new_password = $_POST['New_Password'];
+			$con_new_password = $_POST['Confirm_New_Password'];
+			if (empty($new_password))
+			array_push($errors, "Password connot be empty");
+			if (!preg_match('/[A-Z]/', $new_password))
+				array_push($errors, "Password must contain atleast one uppercase letter (A - Z)");
+			if (!preg_match('/[0-9]/', $new_password))
+				array_push($errors, "Password must contain atleast one numerical digit (0 - 9)");
+			if (!preg_match('/[a-z]/', $new_password))
+				array_push($errors, "Password must contain atleast one lower case letter (a - z)");
+			if (!preg_match($special, $new_password))
+				array_push($errors, "Password must contain atleast one special character ('/[(~`!@#$%^&*()+=_-{}[]\|:;”’?/<>,.)");
+            if (!($new_password == $con_new_password))
+				array_push($errors, "Passwords do not match");
+			if (count($errors) == 0)
+			{
+				$query = $dbc->prepare("UPDATE camagru.user_data SET `password` = :new_password");
+				$query->execute(["new_password"=>hash('whirlpool', str_rot13($new_password))]);
+				header('Location: login.php');
+			}
+			else
+            {
+                foreach ($errors as $e)
+                    echo $e . "\n";
+			}
+			
+		}
     }
     catch(PDOException $err)
     {
         echo $err->getMessage();
-    }
+	}
 ?>

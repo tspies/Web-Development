@@ -16,7 +16,7 @@
 			<input class="login_input" type="text" placeholder="Username" name="log_name"/>
 			<input class="login_input" type="password" placeholder="Password" name="log_pass"/>
 			<input class="login_button" type="submit" value="GO!" name="login"/>
-			<div class="new_user"><a href="sign_up.php">New User -</a><a href=""> Forgot Password</a></div>
+			<div class="new_user"><a href="sign_up.php">New User -</a><a href="forgot_password.php"> Forgot Password</a></div>
 			</form>
 		</div>
 	</body>

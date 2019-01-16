@@ -1,14 +1,14 @@
 <?php
 	include('server.php');
-	$token  = $_GET['token'];
+	$token  = $_GET['reset_token'];
 	$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE token = '$token'");
     $query->execute();
     $rows = $query->fetchAll();
     if (sizeof($rows) >= 1)
 	{
-		$query = $dbc->prepare("UPDATE camagru.user_data SET verified = 1 WHERE verified IS NULL");
-    	$query->execute();	
-		header('location: login.php');
+		$query = $dbc->prepare("UPDATE camagru.user_data SET token = :token");
+    	$query->execute(["token"=>$token]);	
+		header('location: reset_password.php');
 	}
 	else
 	{
