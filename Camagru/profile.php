@@ -1,7 +1,5 @@
 <!DOCTYPE <!DOCTYPE html>
-<?php include('server.php');
-print_r($_POST);
-?>
+<?php include('server.php');?>
 <html>
 <head>
 	<meta charset="utf-8" />

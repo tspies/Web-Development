@@ -17,9 +17,9 @@
 				<div class="title">
 					<div style="margin-top: 3%; font-size: 2vmax;">Update Email</div>
 				</div>
-				<input class="sign_up_input" type="text" placeholder="New Email" name="update_email"/>
+				<input class="sign_up_input" type="text" placeholder="New Email" name="new_email"/>
 				<input class="sign_up_input" type="password" placeholder="Password" name="password_email"/>
-				<input class="login_button" type="submit" name="update_email" value="Save Changes"/>
+				<input class="login_button" type="submit" name="update_email" value="Update"/>
 			</form>
 		</div>
 	</body>

@@ -241,19 +241,19 @@
 		// Updating Email
 		if (isset($_POST['update_email']))
 		{
-			$update_email = $_POST['update_email'];
 			$errors = array();
-			if (empty($email))
+			if (empty($_POST['new_email']))
 				array_push($errors, "Email cannot be empty");
 			else
 			{
-				$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND email = :email");
-				$query->execute(["uname"=>$_SESSION['username'], "email"=>$_POST['update_email']]);
+				$update_email = $_POST['new_email'];
+				$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE email = :email");
+				$query->execute(["email"=>$update_email]);
 				$rows = $query->fetchAll();
 				if (sizeof($rows) >= 1)
 					array_push($errors, "Email Already in use");
 			}
-			if (isset($_POST['password_email']))
+			if (isset($_POST['password_email']) && !(empty($_POST['password_email'])))
 			{
 				$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND `password` = :pass");
 				$query->execute(["uname"=>$_SESSION['username'], "pass"=>hash('whirlpool', str_rot13($_POST['password_email']))]);
@@ -265,8 +265,8 @@
 				array_push($errors, "Please insert a password");
 			if (count($errors) == 0)
 			{
-				$query = $dbc->prepare("UPDATE camagru.user_data SET email = :email WHERE user = :user");
-				$query->execute(["email"=>$_SESSION['new_email'], "user"=>$_SESSION['username']]);
+				$query = $dbc->prepare("UPDATE camagru.user_data SET email = :email WHERE username = :user");
+				$query->execute(["email"=>$update_email, "user"=>$_SESSION['username']]);
 				header ('location: profile.php');
 			}
 			else
