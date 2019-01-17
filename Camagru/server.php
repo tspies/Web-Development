@@ -174,7 +174,106 @@
                 foreach ($errors as $e)
                     echo $e . "\n";
 			}
-			
+		}
+		if (isset($_POST['change_username']))
+			{
+				header ('location: update_username.php');
+			}
+			if (isset($_POST['change_email']))
+			{
+				header ('location: update_email.php');
+			}
+			if (isset($_POST['change_notifications']))
+			{
+				header ('location: update_notifications.php');
+			}
+		// Updating Notifications
+		if (isset($_POST['update_notifications']))
+		{
+			$errors = array();
+			if (isset($_POST['Notifications_ON']) && isset($_POST['Notifications_OFF']))
+				array_push($errors, "Please select only one option");
+			elseif (!(isset($_POST['Notifications_ON'])) && !(isset($_POST['Notifications_OFF'])))
+				array_push($errors, "Please select an option");
+			elseif (isset($_POST['Notifications_ON']))
+			{
+				$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND `notifications` = 0");
+				$query->execute(["uname"=>$_SESSION['username']]);
+				$rows = $query->fetchAll();
+				if (sizeof($rows) >= 1)
+				{
+					$query = $dbc->prepare("UPDATE camagru.user_data SET `notifications` = 1");
+					$query->execute();				}
+				else
+					array_push($errors, "Notifications are already turned on!");
+			}	
+			elseif (isset($_POST['Notifications_OFF']))
+			{
+				$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND `notifications` = 1");
+				$query->execute(["uname"=>$_SESSION['username']]);
+				$rows = $query->fetchAll();
+				if (sizeof($rows) >= 1)
+				{
+					$query = $dbc->prepare("UPDATE camagru.user_data SET `notifications` = 0 WHERE username = :uname");
+					$query->execute(["uname"=>$_SESSION['username']]);
+				}
+				else
+					array_push($errors, "Notifications are already turned off!");
+			}
+			if (isset($_POST['notif_password']))
+			{
+				$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND `password` = :pass");
+				$query->execute(["uname"=>$_SESSION['username'], "pass"=>hash('whirlpool', str_rot13($_POST['notif_password']))]);
+				$rows = $query->fetchAll();
+				if (sizeof($rows) <= 0)
+					array_push($errors, "Password incorrect");
+			}
+			else
+				array_push($errors, "Please insert a password");
+			if (count($errors) == 0)
+				header ('location: profile.php');
+			else
+			{
+                foreach ($errors as $e)
+					echo $e . "\n";
+			}
+		}
+		// Updating Email
+		if (isset($_POST['update_email']))
+		{
+			$update_email = $_POST['update_email'];
+			$errors = array();
+			if (empty($email))
+				array_push($errors, "Email cannot be empty");
+			else
+			{
+				$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND email = :email");
+				$query->execute(["uname"=>$_SESSION['username'], "email"=>$_POST['update_email']]);
+				$rows = $query->fetchAll();
+				if (sizeof($rows) >= 1)
+					array_push($errors, "Email Already in use");
+			}
+			if (isset($_POST['password_email']))
+			{
+				$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND `password` = :pass");
+				$query->execute(["uname"=>$_SESSION['username'], "pass"=>hash('whirlpool', str_rot13($_POST['password_email']))]);
+				$rows = $query->fetchAll();
+				if (sizeof($rows) <= 0)
+					array_push($errors, "Password incorrect");
+			}
+			else
+				array_push($errors, "Please insert a password");
+			if (count($errors) == 0)
+			{
+				$query = $dbc->prepare("UPDATE camagru.user_data SET email = :email WHERE user = :user");
+				$query->execute(["email"=>$_SESSION['new_email'], "user"=>$_SESSION['username']]);
+				header ('location: profile.php');
+			}
+			else
+			{
+                foreach ($errors as $e)
+					echo $e . "\n";
+			}
 		}
     }
     catch(PDOException $err)
