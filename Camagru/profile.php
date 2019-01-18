@@ -56,6 +56,10 @@
 				<form method="post" action="profile.php">
 					<input class="login_button" type="submit" value="change" name="change_notifications"/>
 				</form>
+				<h2 class="sub_headings">Password:</h2>
+				<form method="post" action="profile.php">
+					<input class="login_button" type="submit" value="change" name="password_profile_change"/>
+				</form>
 			</div>
 		</div>
 		<div class="content">

@@ -115,6 +115,9 @@
                     echo $e . "\n";
 			}
 		}
+		// Change password from profile
+		if (isset($_POST['password_profile_change']))
+			header ('location: forgot_password.php');
 		// Reset Password
 		if (isset($_POST['forgot_password']))
 		{
@@ -274,6 +277,44 @@
                 foreach ($errors as $e)
 					echo $e . "\n";
 			}
+		}
+		if (isset($_POST['update_username']))
+		{
+			$errors = array();
+			if (empty($_POST['new_username']))
+				array_push($errors, "Username cannot be empty");
+			else
+			{
+				$update_username = $_POST['new_username'];
+				$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :update_user");
+				$query->execute(["update_user"=>$update_username]);
+				echo $update_username;
+				$rows = $query->fetchAll();
+				if (sizeof($rows) >= 1)
+					array_push($errors, "Username already in use");
+			}
+			if (isset($_POST['password_update_username']) && !(empty($_POST['password_update_username'])))
+			{
+				$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE username = :uname AND `password` = :pass");
+				$query->execute(["uname"=>$_SESSION['username'], "pass"=>hash('whirlpool', str_rot13($_POST['password_update_username']))]);
+				$rows = $query->fetchAll();
+				if (sizeof($rows) <= 0)
+					array_push($errors, "Password incorrect");
+			}
+			else
+				array_push($errors, "Please insert a password");
+			if (count($errors) == 0)
+			{
+				$query = $dbc->prepare("UPDATE camagru.user_data SET username = :update_user WHERE `password` = :pass_update_email");
+				$query->execute(["username"=>$update_username, "pass_update_email"=>hash('whirlpool', str_rot13($_POST['password_update_username']))]);
+				$_SESSION['username'] = $update_username;
+				header ('location: profile.php');
+			}
+			else
+			{
+                foreach ($errors as $e)
+					echo $e . "\n";
+			}	
 		}
     }
     catch(PDOException $err)
