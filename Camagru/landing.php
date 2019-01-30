@@ -81,7 +81,11 @@
 				document.getElementById("save").addEventListener("click", function ()
 				{
 					var canvas = document.getElementById("file")
-					document.getElementById("image_upload").value = canvas.toDataURL();
+					context2.drawImage(canvas, 0, 0, 380, 280);
+						document.getElementById("image_upload").value = canvas.toDataURL();
+				});
+				document.getElementByID("file").addEventListener("change", function() {
+
 				});
             </script>
         <div class="footer">Footer</div>
