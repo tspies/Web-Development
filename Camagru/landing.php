@@ -21,6 +21,7 @@
 </head>
 <body>
     <div class="landing">
+		
         <div class="header">
             <a href="gallary.php">
                 <img src="img/home.png" style="background-color: transparent" class="home">
@@ -39,13 +40,13 @@
 				<canvas id="canvas" width="380" height="280"></canvas>
 				<input type="hidden" name="saved_image" id="image">
 				<canvas id="canvas2" width="380" height="280"></canvas>
-				<button type="button" id="capture">Capture</button>
-				<button type="Submit" name="save">Save</button>
+				<!-- <button type="button" id="capture">Capture</button>
+				<button type="Submit" name="save">Save</button> -->
+				<button onclick="alert('hello')">Sumbit</button>
 			</form>
 			<form action="landing.php" method="POST" enctype="multipart/form-data">
 				<label class="label">Upload a file:</label>
 				<input type="file" id="file">
-				<input type="hidden" name="saved_image" id="image_upload">
 				<input type="submit" id="save"value="Upload">
 			</form>
 			<?php
@@ -78,15 +79,26 @@
 						context2.drawImage(canvas, 0, 0, 380, 280);
 							document.getElementById("image").value = canvas2.toDataURL();
 				});
-				document.getElementById("save").addEventListener("click", function ()
-				{
-					var canvas = document.getElementById("file")
-					context2.drawImage(canvas, 0, 0, 380, 280);
-						document.getElementById("image_upload").value = canvas.toDataURL();
-				});
-				document.getElementByID("file").addEventListener("change", function() {
-
-				});
+				// document.getElementById("save").addEventListener("click", function ()
+				// {
+				// 	var canvas = document.getElementById("file")
+				// 	context2.drawImage(canvas, 0, 0, 380, 280);
+				// 		document.getElementById("image_upload").value = canvas.toDataURL();
+				// });
+				document.getElementById('file').onchange = function(e) {
+					// var img = new Image();
+					// img.onload = draw;
+					// img.onerror = failed;
+					// img.src = URL.createObjectURL(this.files[0]);
+					// };
+					// function draw() {
+					// context2.drawImage(this, 0,0);
+					// document.getElementById("image_upload").value = canvas2.toDataURL("image/png");
+					// }
+					// function failed() {
+					// console.error("The provided file couldn't be loaded as an Image media");
+					alert("hello");
+					}
             </script>
         <div class="footer">Footer</div>
     </div>	
