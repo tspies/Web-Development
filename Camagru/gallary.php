@@ -38,7 +38,6 @@
         <div class="sidebar"></div>
         <div class="content">
 		<?php
-				$user = $_SESSION['username'];
 				$query = $dbc->prepare(" SELECT * FROM camagru.userpic");
 				$query->execute();
 				echo '<div class="container">';

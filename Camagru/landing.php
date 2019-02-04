@@ -44,9 +44,9 @@
 			</form>
 			<form action="landing.php" method="POST" enctype="multipart/form-data">
 				<label class="label">Upload a file:</label>
-				<input type="file" id="file">
+				<input type="file" id="file" name="image">
 				<input type="hidden" name="saved_image" id="image_upload">
-				<input type="submit" id="save"value="Upload">
+				<input type="submit" name="upload_image" value="Upload">
 			</form>
 			<?php
 				if (isset($_POST['save']))
@@ -56,14 +56,20 @@
 					$query = $dbc->prepare("INSERT INTO camagru.userpic (picture, user_tag, likes) VALUES ('$saved_image', '$user', 0)");
 					$query->execute();
 				}
+				if(isset($_POST['upload_image'])){
+					$user = $SESSION['username'];
+					$file = file_get_contents($_FILES['image']['tmp_name']);
+					$bfile = base64_encode($file);
+					$need = 'data:image/png;base64,';
+					$saved_image = $need.$bfile;
+					$query = $dbc->prepare("INSERT INTO camagru.userpic (picture, user_tag, likes) VALUES ('$saved_image', '$user', 0)");
+					$query->execute();
+				}
 			?>
-		<!-- </div> -->
 		<script>
 				var video = document.getElementById('video');
 				var canvas = document.getElementById('canvas');
 				var context = canvas.getContext('2d');
-				var canvas2 = document.getElementById('canvas2');
-				var context2 = canvas2.getContext('2d');
 
 				if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)
 				{
@@ -74,18 +80,9 @@
 				}
 
 				document.getElementById("capture").addEventListener("click", function() {
-					context2.drawImage(video, 0, 0, 380, 280);
-						context2.drawImage(canvas, 0, 0, 380, 280);
-							document.getElementById("image").value = canvas2.toDataURL();
-				});
-				document.getElementById("save").addEventListener("click", function ()
-				{
-					var canvas = document.getElementById("file")
-					context2.drawImage(canvas, 0, 0, 380, 280);
-						document.getElementById("image_upload").value = canvas.toDataURL();
-				});
-				document.getElementByID("file").addEventListener("change", function() {
-
+					context.drawImage(video, 0, 0, 380, 280);
+						context.drawImage(canvas, 0, 0, 380, 280);
+							document.getElementById("image").value = canvas.toDataURL();
 				});
             </script>
         <div class="footer">Footer</div>
