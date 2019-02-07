@@ -21,6 +21,7 @@
 </head>
 <body>
     <div class="landing">
+		
         <div class="header">
             <a href="gallary.php">
                 <img src="img/home.png" style="background-color: transparent" class="home">
@@ -39,14 +40,20 @@
 				<canvas id="canvas" width="380" height="280"></canvas>
 				<input type="hidden" name="saved_image" id="image">
 				<canvas id="canvas2" width="380" height="280"></canvas>
-				<button type="button" id="capture">Capture</button>
-				<button type="Submit" name="save">Save</button>
+				<!-- <button type="button" id="capture">Capture</button>
+				<button type="Submit" name="save">Save</button> -->
+				<button onclick="alert('hello')">Sumbit</button>
 			</form>
 			<form action="landing.php" method="POST" enctype="multipart/form-data">
 				<label class="label">Upload a file:</label>
+<<<<<<< HEAD
 				<input type="file" id="file" name="image">
 				<input type="hidden" name="saved_image" id="image_upload">
 				<input type="submit" name="upload_image" value="Upload">
+=======
+				<input type="file" id="file">
+				<input type="submit" id="save"value="Upload">
+>>>>>>> 29c780b47ec2d44d5a72ea77fdfea699807a1997
 			</form>
 			<?php
 				if (isset($_POST['save']))
