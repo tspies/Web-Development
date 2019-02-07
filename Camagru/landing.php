@@ -36,25 +36,22 @@
         <div class="sidebar"></div>
         <!-- <div class="content"> -->
 			<form method="POST">
-				<video id="video" width="380" height="280" autoplay="true"></video>
-				<canvas id="canvas" width="380" height="280"></canvas>
+				<video id="video" width="480" height="420" autoplay="true"></video>
+				<canvas id="canvas" width="480" height="420"></canvas>
 				<input type="hidden" name="saved_image" id="image">
-				<canvas id="canvas2" width="380" height="280"></canvas>
-				<!-- <button type="button" id="capture">Capture</button>
-				<button type="Submit" name="save">Save</button> -->
-				<button onclick="alert('hello')">Sumbit</button>
+				<canvas id="canvas2" width="480" height="420"></canvas>
+				<button type="button" id="capture">Capture</button>
+				<button type="Submit" name="save">Save</button>
 			</form>
 			<form action="landing.php" method="POST" enctype="multipart/form-data">
 				<label class="label">Upload a file:</label>
-<<<<<<< HEAD
 				<input type="file" id="file" name="image">
 				<input type="hidden" name="saved_image" id="image_upload">
 				<input type="submit" name="upload_image" value="Upload">
-=======
-				<input type="file" id="file">
-				<input type="submit" id="save"value="Upload">
->>>>>>> 29c780b47ec2d44d5a72ea77fdfea699807a1997
 			</form>
+			<button onclick='draw_sticker("pic1", "20", "190", "150", "150")'><img src="img/kitten.png" width="200px" hieght="200px"id="pic1"></button>
+			<button onclick='draw_sticker("pic2", "300", "190", "150", "150")'><img src="img/dog.png" width="200px" hieght="200px"id="pic2"></button>
+			<button onclick='draw_sticker("pic3", "0", "0", "480", "420")'><img src="img/frame.png" width="200px" hieght="200px"id="pic3"></button>
 			<?php
 				if (isset($_POST['save']))
 				{
@@ -87,10 +84,17 @@
 				}
 
 				document.getElementById("capture").addEventListener("click", function() {
-					context.drawImage(video, 0, 0, 380, 280);
-						context.drawImage(canvas, 0, 0, 380, 280);
+					context.drawImage(video, 0, 0, 480, 420);
+						//context.drawImage(canvas, 0, 0, 480, 420);
 							document.getElementById("image").value = canvas.toDataURL();
 				});
+				function draw_sticker(stick_id, x, y, size_x, size_y)
+				{
+					var sticker = document.getElementById(stick_id);
+					console.log('test');
+					context.drawImage(sticker, x, y, size_x, size_y);
+					document.getElementById("image").value = canvas.toDataURL();
+				}
             </script>
         <div class="footer">Footer</div>
     </div>	
