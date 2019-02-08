@@ -20,6 +20,15 @@
 				"footer footer footer footer footer";
 				padding: 0.5%;
 			}
+		.img-con
+		{
+			margin-top: 5px;
+			margin-bottom: 5px;
+			border-radius: 20px;
+			width: 200px;
+			height: 140px;
+			background: transparent;
+		}
 	</style>
 </head>
 <body>
@@ -38,7 +47,7 @@
         <div class="sidebar"></div>
         <div class="content">
 		<?php
-				$query = $dbc->prepare(" SELECT * FROM camagru.userpic");
+				$query = $dbc->prepare("SELECT * FROM camagru.userpic");
 				$query->execute();
 				echo '<div class="container">';
 				while ($row = $query->fetch())
@@ -47,8 +56,19 @@
 					echo '<div class="img-con">';
 					echo $img;
 					echo '</div>';
-					
+					echo '<div class="comment_box">';
+						$comment_query = $dbc->prepare("SELECT * FROM camagru.comments WHERE user_tag = :tag");
+						$comment_query = execute(["tag"=>$row['user_tag']]);
+						while ($commet_row = $comment_query->fetch())
+						{
+							$comment = $comment_row['comment'];
+							echo '<div class="comment">';
+							echo $comment;
+							echo '</div>';
+						}
+					echo '</div>';
 				}
+				echo '</div>'
 			?>
 		</div>
         <div class="footer">Footer</div>
