@@ -19,15 +19,29 @@
 				". content content content ."
 				"footer footer footer footer footer";
 				padding: 0.5%;
+				margin: 0;
 			}
 		.img-con
 		{
 			margin-top: 5px;
 			margin-bottom: 5px;
 			border-radius: 20px;
-			width: 200px;
-			height: 140px;
 			background: transparent;
+			margin: 0;
+			padding: 0;
+		}
+		.comment
+		{
+			height: 10px;
+			color: pink;
+			background-color: transparent;
+			margin: 0;
+			padding: 0;
+		}
+		.content
+		{
+			margin: 0;
+			padding: 0;
 		}
 	</style>
 </head>
@@ -58,8 +72,8 @@
 					echo '</div>';
 					echo '<div class="comment_box">';
 						$comment_query = $dbc->prepare("SELECT * FROM camagru.comments WHERE user_tag = :tag");
-						$comment_query = execute(["tag"=>$row['user_tag']]);
-						while ($commet_row = $comment_query->fetch())
+						$comment_query->execute(["tag"=>$row['user_tag']]);
+						while ($comment_row = $comment_query->fetch())
 						{
 							$comment = $comment_row['comment'];
 							echo '<div class="comment">';

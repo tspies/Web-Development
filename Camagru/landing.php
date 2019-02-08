@@ -11,12 +11,32 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>landing</title>
-	<link rel="stylesheet">
+	<link rel="stylesheet" href="landing.css">
 	<style>
+		canvas
+		{
+			padding: 0;
+			margin: 0;
+			background: transparent;
+		}
 		body
 		{
-			background-color: purple;
+			margin: 0;
+			padding: 0;
 		}
+		.landing
+			{
+				display: grid;
+				margin: 0.5%;
+				height: 95%;
+				grid-template-columns: 15% 1fr 1fr 1fr 15%;
+				grid-template-rows: 5.5% 1fr 5.5%;
+				grid-template-areas: 
+				"header header header header header"
+				". content content content content"
+				"footer footer footer footer footer";
+				padding: 0.5%;
+			}
 	</style>
 </head>
 <body>
@@ -34,24 +54,27 @@
             </a>
         </div>
         <div class="sidebar"></div>
-        <!-- <div class="content"> -->
-			<form method="POST">
-				<video id="video" width="480" height="420" autoplay="true"></video>
-				<canvas id="canvas" width="480" height="420"></canvas>
-				<input type="hidden" name="saved_image" id="image">
-				<canvas id="canvas2" width="480" height="420"></canvas>
-				<button type="button" id="capture">Capture</button>
-				<button type="Submit" name="save">Save</button>
-			</form>
-			<form action="landing.php" method="POST" enctype="multipart/form-data">
-				<label class="label">Upload a file:</label>
-				<input type="file" id="file" name="image">
-				<input type="hidden" name="saved_image" id="image_upload">
-				<input type="submit" name="upload_image" value="Upload">
-			</form>
-			<button onclick='draw_sticker("pic1", "20", "190", "150", "150")'><img src="img/kitten.png" width="200px" hieght="200px"id="pic1"></button>
-			<button onclick='draw_sticker("pic2", "300", "190", "150", "150")'><img src="img/dog.png" width="200px" hieght="200px"id="pic2"></button>
-			<button onclick='draw_sticker("pic3", "0", "0", "480", "420")'><img src="img/frame.png" width="200px" hieght="200px"id="pic3"></button>
+			<div class="content">
+				<form method="POST">
+					<video id="video" width="480" height="420" autoplay="true"></video>
+					<canvas id="canvas" width="480" height="420"></canvas>
+					<input type="hidden" name="saved_image" id="image">
+					<canvas id="canvas2" width="480" height="420"></canvas>
+					<button type="button" id="capture">Capture</button>
+					<button type="Submit" name="save">Save</button>
+					<input type="hidden" name="saved_image" id="image">
+
+				</form>
+				<form action="landing.php" method="POST" enctype="multipart/form-data">
+					<label class="label">Upload a file:</label>
+					<input type="file" id="file" name="image">
+					<input type="hidden" name="saved_image" id="image_upload">
+					<input type="submit" name="upload_image" value="Upload">
+				</form>
+				<button onclick='draw_sticker("pic1", "20", "190", "150", "150")'><img src="img/kitten.png" width="200px" hieght="200px"id="pic1"></button>
+				<button onclick='draw_sticker("pic2", "300", "190", "150", "150")'><img src="img/dog.png" width="200px" hieght="200px"id="pic2"></button>
+				<button onclick='draw_sticker("pic3", "0", "0", "480", "420")'><img src="img/frame.png" width="200px" hieght="200px"id="pic3"></button>
+			</div>
 			<?php
 				if (isset($_POST['save']))
 				{
