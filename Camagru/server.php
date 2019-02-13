@@ -321,6 +321,29 @@
 					echo $e . "\n";
 			}	
 		}
+		if (isset($_POST['post_comment']))
+		{
+			$user = $_SESSION['username'];
+			$comment = $_POST['comment'];
+			$id = $_POST['add_like'];
+			if (!(empty($comment)))
+			{
+				$query = $dbc->prepare("SELECT * FROM camagru.comments WHERE comment = :comment");
+				$query->execute(["comment"=>$comment]);
+				$rows = $query->fetch();
+				if (count($rows) <= 1)
+				{
+					$query = $dbc->prepare("INSERT INTO camagru.comments (comment, pic_id, user_tag) VALUES ('$comment', '$id', '$user')");
+					$query->execute();
+				}
+			}
+		}
+		if (isset($_POST['like_pic']))
+		{
+			$user = $_SESSION['username'];
+			$query = $dbc->prepare("UPDATE camagru.userpic SET likes = likes + 1  WHERE id = :pic_id");
+			$query->execute(["pic_id"=>$_POST['add_like']]);
+		}
     }
     catch(PDOException $err)
     {

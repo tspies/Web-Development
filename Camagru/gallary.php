@@ -33,14 +33,14 @@
 		.comment
 		{
 			height: 10px;
-			color: pink;
+			color: red;
 			background-color: transparent;
-			margin: 0;
+			margin-bottom: 6px;
 			padding: 0;
 		}
 		.content
 		{
-			margin: 0;
+			margin 0;
 			padding: 0;
 		}
 	</style>
@@ -70,9 +70,15 @@
 					echo '<div class="img-con">';
 					echo $img;
 					echo '</div>';
+					echo '<form method="POST" action="gallary.php">';
+						echo '<input type="text" name="comment" placeholder="Type Comment..." style="margin-right: 4px;"/>';
+						echo '<input type="submit" value="POST" name="post_comment" style="margin-right: 4px;"/>';
+						echo '<input type="submit" value="'.$row['likes']." ".'LIKES" name="like_pic"/>';
+						echo '<input type="hidden" value="'.$row['id'].'" name="add_like"/>';
+					echo '</form>';
 					echo '<div class="comment_box">';
-						$comment_query = $dbc->prepare("SELECT * FROM camagru.comments WHERE user_tag = :tag");
-						$comment_query->execute(["tag"=>$row['user_tag']]);
+						$comment_query = $dbc->prepare("SELECT * FROM camagru.comments WHERE pic_id = :id");
+						$comment_query->execute(["id"=>$row['id']]);
 						while ($comment_row = $comment_query->fetch())
 						{
 							$comment = $comment_row['comment'];

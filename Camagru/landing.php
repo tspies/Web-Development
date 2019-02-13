@@ -59,10 +59,8 @@
 					<video id="video" width="480" height="420" autoplay="true"></video>
 					<canvas id="canvas" width="480" height="420"></canvas>
 					<input type="hidden" name="saved_image" id="image">
-					<canvas id="canvas2" width="480" height="420"></canvas>
 					<button type="button" id="capture">Capture</button>
 					<button type="Submit" name="save">Save</button>
-					<input type="hidden" name="saved_image" id="image">
 
 				</form>
 				<form action="landing.php" method="POST" enctype="multipart/form-data">
@@ -108,7 +106,6 @@
 
 				document.getElementById("capture").addEventListener("click", function() {
 					context.drawImage(video, 0, 0, 480, 420);
-						//context.drawImage(canvas, 0, 0, 480, 420);
 							document.getElementById("image").value = canvas.toDataURL();
 				});
 				function draw_sticker(stick_id, x, y, size_x, size_y)
