@@ -69,7 +69,7 @@
 		<?php
 				$limit = 5;
 				$start = $_GET['p'] * $limit - $limit;
-				$query = $dbc->prepare("SELECT * FROM camagru.userpic");
+				$query = $dbc->prepare("SELECT * FROM camagru.userpic LIMIT $start, $limit");
 				$query->execute();
 				echo '<div class="container">';
 				while ($row = $query->fetch())
@@ -96,9 +96,12 @@
 								echo $comment;
 								echo '</div>';
 							}
-						echo '</div>';
 					}
 				}
+				echo '</div>';
+				$nextpage = $_GET['p'] + 1;
+				$link = '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=' . $nextpage . '">Next</a>';
+				echo $link;
 				echo '</div>'
 			?>
 		</div>
