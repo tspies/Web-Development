@@ -48,19 +48,27 @@
 <body>
     <div class="landing">
         <div class="header">
-            <a href="landing.php">
-                <img src="img/home.png" style="background-color: transparent" class="home">
-            </a>
-            <a href="notifications.php">
-                <img src="img/message.png" style="background-color: transparent" class="notification">
-            </a>
-            <a href="profile.php">
-                <img src="img/profile.png" style="background-color: transparent" class="profile">
-            </a>
+		<?php
+			if (isset($_SESSION['username']))
+			{
+				echo '<a href="landing.php">';
+                	echo '<img src="img/home.png" style="background-color: transparent" class="home">';
+            	echo '</a>';
+           		echo '<a href="notifications.php">';
+                	echo '<img src="img/message.png" style="background-color: transparent" class="notification">';
+            	echo '</a>';
+            	echo '<a href="profile.php">';
+                	echo '<img src="img/profile.png" style="background-color: transparent" class="profile">';
+            	echo '</a>';
+			}
+		?>
+            
         </div>
         <div class="sidebar"></div>
         <div class="content">
 		<?php
+				$limit = 5;
+				$start = $_GET['p'] * $limit - $limit;
 				$query = $dbc->prepare("SELECT * FROM camagru.userpic");
 				$query->execute();
 				echo '<div class="container">';
@@ -70,23 +78,26 @@
 					echo '<div class="img-con">';
 					echo $img;
 					echo '</div>';
-					echo '<form method="POST" action="gallary.php">';
-						echo '<input type="text" name="comment" placeholder="Type Comment..." style="margin-right: 4px;"/>';
-						echo '<input type="submit" value="POST" name="post_comment" style="margin-right: 4px;"/>';
-						echo '<input type="submit" value="'.$row['likes']." ".'LIKES" name="like_pic"/>';
-						echo '<input type="hidden" value="'.$row['id'].'" name="add_like"/>';
-					echo '</form>';
-					echo '<div class="comment_box">';
-						$comment_query = $dbc->prepare("SELECT * FROM camagru.comments WHERE pic_id = :id");
-						$comment_query->execute(["id"=>$row['id']]);
-						while ($comment_row = $comment_query->fetch())
-						{
-							$comment = $comment_row['comment'];
-							echo '<div class="comment">';
-							echo $comment;
-							echo '</div>';
-						}
-					echo '</div>';
+					if (isset($_SESSION['username']))
+					{
+						echo '<form method="POST" action="gallary.php">';
+							echo '<input type="text" name="comment" placeholder="Type Comment..." style="margin-right: 4px;"/>';
+							echo '<input type="submit" value="POST" name="post_comment" style="margin-right: 4px;"/>';
+							echo '<input type="submit" value="'.$row['likes']." ".'LIKES" name="like_pic"/>';
+							echo '<input type="hidden" value="'.$row['id'].'" name="add_like"/>';
+						echo '</form>';
+						echo '<div class="comment_box">';
+							$comment_query = $dbc->prepare("SELECT * FROM camagru.comments WHERE pic_id = :id");
+							$comment_query->execute(["id"=>$row['id']]);
+							while ($comment_row = $comment_query->fetch())
+							{
+								$comment = $comment_row['comment'];
+								echo '<div class="comment">';
+								echo $comment;
+								echo '</div>';
+							}
+						echo '</div>';
+					}
 				}
 				echo '</div>'
 			?>

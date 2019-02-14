@@ -43,7 +43,7 @@
     <div class="landing">
 		
         <div class="header">
-            <a href="gallary.php">
+            <a href="gallary.php?p=1">
                 <img src="img/home.png" style="background-color: transparent" class="home">
             </a>
             <a href="notifications.php">
