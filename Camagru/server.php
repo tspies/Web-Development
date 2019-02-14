@@ -11,7 +11,7 @@
 
     try
     {
-		require('connection.php');
+		require('database.php');
 		// Sign Up
         if (isset($_POST['sign_up']))
         {
@@ -74,7 +74,7 @@
 		// Login
         if (isset($_POST['login']))
         {
-            require('connection.php');
+            require('database.php');
             unset($errors);
 
             $log_name = $_POST['log_name'];
@@ -124,7 +124,7 @@
 			$errors = array();
 
 			// Checking for existing email in DB
-			require('connection.php');
+			require('database.php');
 			$query = $dbc->prepare("SELECT * FROM camagru.user_data WHERE email = :email");
 			$query->execute(["email"=>$_POST['email_reset']]);
 			$rows = $query->fetchAll();

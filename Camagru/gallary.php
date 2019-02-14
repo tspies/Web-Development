@@ -98,8 +98,15 @@
 							}
 					}
 				}
-				echo '</div>';
+				echo '</div>';				
 				$nextpage = $_GET['p'] + 1;
+				if ($_GET['p'] > 1)
+				{
+					$previous = $nextpage - 2;
+					echo '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=' . $previous . '">Previous</a>';
+				}
+				else
+					echo '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=1">Previous</a>';
 				$link = '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=' . $nextpage . '">Next</a>';
 				echo $link;
 				echo '</div>'
