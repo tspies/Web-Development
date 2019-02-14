@@ -80,10 +80,12 @@
 					echo '</div>';
 					if (isset($_SESSION['username']))
 					{
-						echo '<form method="POST" action="gallary.php">';
+						echo '<form method="POST" action="gallary.php?p=1">';
 							echo '<input type="text" name="comment" placeholder="Type Comment..." style="margin-right: 4px;"/>';
-							echo '<input type="submit" value="POST" name="post_comment" style="margin-right: 4px;"/>';
-							echo '<input type="submit" value="'.$row['likes']." ".'LIKES" name="like_pic"/>';
+							echo '<input type="submit" value="POST" name="post_comment" style="margin-right: 5px;"/>';
+							echo '<input type="submit" value="'.$row['likes']." ".'LIKES" name="like_pic" style="margin-right: 5px;"/>';
+							if ($row['user_tag'] == $_SESSION['username'])
+								echo '<input type="submit" value="Delete" name="delete_pic";"/>';
 							echo '<input type="hidden" value="'.$row['id'].'" name="add_like"/>';
 						echo '</form>';
 						echo '<div class="comment_box">';
@@ -100,13 +102,16 @@
 				}
 				echo '</div>';				
 				$nextpage = $_GET['p'] + 1;
+				$query = $dbc->prepare("SELECT * FROM camagru.userpic LIMIT $start, $limit");
+				$query->execute();
+				$row = $query->fetchAll();
 				if ($_GET['p'] > 1)
 				{
 					$previous = $nextpage - 2;
-					echo '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=' . $previous . '">Previous</a>';
+					echo '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=' . $previous . '" style="margin: 8px;">Previous</a>';
 				}
 				else
-					echo '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=1">Previous</a>';
+					echo '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=1" style="margin: 8px;">Previous</a>';
 				$link = '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=' . $nextpage . '">Next</a>';
 				echo $link;
 				echo '</div>'
