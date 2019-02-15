@@ -8,7 +8,6 @@
 	</head>
 	<body style="background-color: #fafafa">
 		<div>
-			<?php print_r($_SESSION)?>
 			<form class="sign_up" method="post">
 				<div class="title">
 					<div style="margin-top: 3%; font-size: 2vmax;">Update Notifications</div>
