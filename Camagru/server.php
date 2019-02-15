@@ -349,6 +349,11 @@
 			$query = $dbc->prepare("UPDATE camagru.userpic SET likes = likes + 1  WHERE id = :pic_id");
 			$query->execute(["pic_id"=>$_POST['add_like']]);
 		}
+		if (isset($_POST['delete_pic']))
+		{
+			$query = $dbc->prepare("DELETE FROM camagru.userpic WHERE id = :pic_id");
+			$query->execute(["pic_id"=>$_POST['add_like']]);
+		}
     }
     catch(PDOException $err)
     {
