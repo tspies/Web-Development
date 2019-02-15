@@ -55,7 +55,7 @@
                 $password = hash('whirlpool', str_rot13($password));
                 echo $password;
                 $token = hash('whirlpool', str_rot13($username));
-                $link = "http://localhost:8080/WebDev/Camagru/email_auth.php?token=".$token;
+                $link = "http://localhost:8080/Web-Development/Camagru/email_auth.php?token=".$token;
                 $query = "INSERT INTO camagru.user_data (username, email, `password`, notifications, token)
                             VALUES ('$username', '$email', '$password', '$Notifications', '$token')";
 				$dbc->exec($query);
@@ -133,7 +133,7 @@
 				//Generating Random Token
 				$raw_string = rand(10, 100);
 				$reset_token = hash('whirlpool', str_rot13($raw_string));
-				$link = "http://localhost:8080/WebDev/Camagru/reset_password.php?reset_token=".$reset_token;
+				$link = "http://localhost:8080/Web-Development/Camagru/reset_password.php?reset_token=".$reset_token;
 
 				// Update database with new token
 				$query = $dbc->prepare("UPDATE camagru.user_data SET token = :new_token");
@@ -326,17 +326,22 @@
 			$user = $_SESSION['username'];
 			$comment = $_POST['comment'];
 			$id = $_POST['add_like'];
-			if (!(empty($comment)))
+			if (!preg_match($special, $comment))
 			{
-				$query = $dbc->prepare("SELECT * FROM camagru.comments WHERE comment = :comment");
-				$query->execute(["comment"=>$comment]);
-				$rows = $query->fetch();
-				if (count($rows) <= 1)
+				if (!(empty($comment)))
 				{
-					$query = $dbc->prepare("INSERT INTO camagru.comments (comment, pic_id, user_tag) VALUES ('$comment', '$id', '$user')");
-					$query->execute();
+					$query = $dbc->prepare("SELECT * FROM camagru.comments WHERE comment = :comment");
+					$query->execute(["comment"=>$comment]);
+					$rows = $query->fetch();
+					if (count($rows) <= 1)
+					{
+						$query = $dbc->prepare("INSERT INTO camagru.comments (comment, pic_id, user_tag) VALUES ('$comment', '$id', '$user')");
+						$query->execute();
+					}
 				}
 			}
+			else
+				echo "Bad Comment Characters";
 		}
 		if (isset($_POST['like_pic']))
 		{

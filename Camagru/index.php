@@ -49,7 +49,9 @@
 			color: black;
 			background: transparent;
 			margin-top: 7%;
+			margin-bottom: 7%;
 			font-size: 1.5vmax;
+			text-decoration: none;
 		}
 		h1
 		{
@@ -65,6 +67,7 @@
 			<h1>WELCOME TO<br><div class="supergram">SUPERGRAM<div></h1>
 			<a href="sign_up.php">
 			<div class="login_button"><div class="pee">Get Started</div><div>
+			<div class="login_button"><div class="pee"><a href="gallary.php?p=1" style="text-decoration: none;">View Gallary</s></div><div>
 			</a>
 	</div>
 	</div>	

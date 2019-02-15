@@ -1,6 +1,8 @@
 <?php require_once('server.php');?>
 <!DOCTYPE <!DOCTYPE html>
 <?php
+if (!(isset($_SESSION['username'])))
+	header('Location: login.php');
 	if (isset($_POST['save']))
 	{
 		echo "SAVED!!!!";
@@ -46,12 +48,10 @@
             <a href="gallary.php?p=1">
                 <img src="img/home.png" style="background-color: transparent" class="home">
             </a>
-            <a href="notifications.php">
+            <a href="profile.php">
                 <img src="img/message.png" style="background-color: transparent" class="notification">
             </a>
-            <a href="profile.php">
-                <img src="img/profile.png" style="background-color: transparent" class="profile">
-            </a>
+			<a href="log_out.php">LOG OUT</a>
         </div>
         <div class="sidebar"></div>
 			<div class="content">
@@ -116,7 +116,11 @@
 					document.getElementById("image").value = canvas.toDataURL();
 				}
             </script>
-        <div class="footer">Footer</div>
+        <div class="footer">	<?php
+				if (isset($_SESSION['username']))
+					echo '<a href="log_out.php" style="color: red; font-size: 2vmax;">LOG OUT</a>';
+			?>
+			</div>
     </div>	
 </body>
 </html>

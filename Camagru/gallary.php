@@ -1,5 +1,8 @@
 <!DOCTYPE <!DOCTYPE html>
-<?php include('server.php')?>
+<?php include('server.php');
+	if (!(isset($_GET['p'])))
+		header('Location: index.php');
+?>
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -54,17 +57,18 @@
 				echo '<a href="landing.php">';
                 	echo '<img src="img/home.png" style="background-color: transparent" class="home">';
             	echo '</a>';
-           		echo '<a href="notifications.php">';
+           		echo '<a href="profile.php">';
                 	echo '<img src="img/message.png" style="background-color: transparent" class="notification">';
-            	echo '</a>';
-            	echo '<a href="profile.php">';
-                	echo '<img src="img/profile.png" style="background-color: transparent" class="profile">';
-            	echo '</a>';
+				echo '</a>';
 			}
+			else
+				echo '<a href="login.php">LOGIN</a>';
 		?>
             
         </div>
-        <div class="sidebar"></div>
+        <div class="sidebar">
+		
+		</div>
         <div class="content">
 		<?php
 				$limit = 5;
@@ -117,7 +121,12 @@
 				echo '</div>'
 			?>
 		</div>
-        <div class="footer">Footer</div>
+        <div class="footer">
+			<?php
+				if (isset($_SESSION['username']))
+					echo '<a href="log_out.php" style="color: red; font-size: 2vmax;">LOG OUT</a>';
+			?>
+			</div>
     </div>	
 </body>
 </html>

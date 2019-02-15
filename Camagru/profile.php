@@ -1,5 +1,8 @@
 <!DOCTYPE <!DOCTYPE html>
-<?php include('server.php');?>
+<?php include('server.php');
+	if (!(isset($_SESSION['username'])))
+		header('Location: login.php');
+?>
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -21,16 +24,12 @@
 	<div class="landing">
 		<div class="header">
 			<a href="landing.php">
-				<!-- <img src="img/home.png" style="background-color: transparent" class="home"> -->
-			</a>
-			<a href="notifications.php">
-				<!-- <img src="img/message.png" style="background-color: transparent" class="notification"> -->
+				<img src="img/home.png" style="background-color: transparent" class="home">
 			</a>
 			<a href="profile.php">
-				<!-- <img src="img/profile.png" style="background-color: transparent" class="profile"> -->
+				<img src="img/message.png" style="background-color: transparent" class="notification">
 			</a>
 		</div>
-		<a href="log_out.php">LOG OUT</a>
 		<div class="sidebar">
 		<h2 class="profile_heading">User Information</h2>
 			<?php 
@@ -65,7 +64,7 @@
 		<div class="content">
 			<h2 class="profile_heading">User Pictures</h2>
 		</div>
-		<div class="footer">Footer</div>
+		<div class="footer"><a href="log_out.php" style="color: red; font-size: 2vmax;">LOG OUT</a></div>
 	</div>	
 </body>
 </html>
