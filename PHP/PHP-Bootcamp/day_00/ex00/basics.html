@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html style="background-color: rgb(255,192,203)">
+    <head>
+        <style>
+            *{
+              box-sizing: border-box;  
+            }
+            h1{
+                text-align: center;
+                color: white;
+            }
+            img{
+                height: 400px;
+            }
+            .column{
+                float: left;
+                width: 50%;
+                padding: 5px;
+            }
+            .row::after{
+                content: "";
+                clear: both;
+                display: table;
+            }
+        </style>
+        <title>Basics</title>
+        <h1>Y&empty;U N&Epsilon;&Epsilon;D G&Alpha;M&Epsilon;S</h1>
+    </head>
+    <body>
+        <div class="row">
+            <div class="column">
+                <img src="Amazon-logo-bigger.jpg" alt="Amazon_Logo">
+                <a href="https://www.takealot.com/">
+                    <p>
+                        https://www.takealot.com 
+                    </p>
+                </a>
+            </div>
+            <div class="column">
+                <img src="Takealot-logo.jpg" alt="Takealot_Logo">
+                <a href="https://www.amazon.com/">
+                    <p>
+                        https://www.amazon.com
+                    </p>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <p style="text-align: right">
+            &copy; tspies 2018
+        </p>
+    </body>
+</html>

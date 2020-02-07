@@ -1,0 +1,80 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+	<title>Calc</title>
+	<script>
+		//Getting all info from calculator.
+		window.onload = function () 
+		{
+			var left_num = document.getElementById("left");
+			var operator = document.getElementById("operation");
+			var right_num = document.getElementById("right");
+			var submit = document.getElementById("try");
+
+			window.setInterval(function(){
+				alert("Please, use me...");
+			}, 30000)
+	
+			//Making a variable function to display and log at the same time.
+			var show = function(text)
+			{
+				console.log(text);
+				alert(text);
+			}
+	
+			submit.addEventListener("click", function ()
+			{
+				//Parsing left & right as ints and pulling value for operator.
+				left_value = parseInt(left_num.value);
+				op = operator.value;
+				right_value = parseInt(right_num.value);
+				var final_res = eval(left_value + op + right_value);
+				if ((isNaN(left_value) || isNaN(right_value) || isNaN(final_res))
+					|| (left_value < 0 || right_value < 0))
+				{
+					show("Error :(");
+				}
+				else if ((op === "/" || op === "%") && (right_value === 0))
+					show("It's over 9000!");
+				else
+					show(final_res);
+			})
+		}
+	</script>
+	<style>
+		.calcu
+		{
+			position: absolute;
+			left: 30%;
+			background: skyblue;
+			width: 30%;
+			height: 20%;
+			border-radius: 20px;
+		}
+		.ele
+		{
+			position: absolute;
+			left: 8%;
+			margin-top: 23%;
+		}
+	</style>
+</head>
+<body>
+	<div class="calcu">
+		<div class="ele">
+			<form method="GET" action="calc.html">
+				<input type="text" id="left"/>
+				<select id="operation">
+					<option value="+"selected>+</opntion>
+					<option value="-">-</opntion>
+					<option value="/">/</opntion>
+					<option value="%">%</opntion>
+					<option value="*">*</opntion>
+				</select>
+				<input type="text" id="right">
+				<input type="submit" id="try" value="Try me!"/>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

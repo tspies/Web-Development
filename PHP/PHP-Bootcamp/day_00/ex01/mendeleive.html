@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .p_table{
+                width: 110%;
+                min-width: 500px;
+            }
+            .pannel{
+                margin-bottom: 1%;
+            }
+            .p_coloumn{
+                width: 67px;
+                display: inline-block;
+                margin-right: 0.5px;
+            }
+            .cell{
+                border: 1px solid black;
+				border-radius: 6px;
+                width: 60px;
+                height: 45px;
+                margin-top: 3px;
+                padding: 3%;
+            }
+            .atom_num{
+				position: relative;
+                font-size: 9px;
+            }
+            .atom_num > span{
+            position: absolute;
+            left: 1px;
+            bottom: 0px;
+            }
+            .el{
+				text-align: center;
+                vertical-align: middle;
+				line-height: 45px;
+				font-weight: bold;
+                font-size: 10;
+            }
+            .atom_wght{
+                position: relative;
+                font-size: 9px;
+            }
+            .atom_wght > span{
+            position: absolute;
+            right: 0.5px;
+            top: 0;
+            }
+			img{
+				box-sizing: border-box;
+				width: 500px;
+				height: 200px;
+			}
+        </style>
+    </head>
+    <body style="background-image: url(giphy.gif)">
+        <div class="p_table">
+            <div class="pannel">
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(149,251,114)">
+                        <div class="atom_wght"><span>1.008</span></div>
+                        <div class="el">H</div>
+                        <div class="atom_num" ><span>1</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(248,215,119)">
+                        <div class="atom_wght"><span>6.94</span></div>
+						<div class="el">Li</div>
+						<div class="atom_num" ><span>3</span></div>                    
+					</div>
+                    <div class="cell" style="background-color: rgb(248,215,119)">
+                        <div class="atom_wght"><span>22.990</span></div>
+						<div class="el">Na</div>
+                        <div class="atom_num" ><span>11</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(248,215,119)">
+                        <div class="atom_wght"><span>39.098</span></div>
+                        <div class="el">K</div>
+                        <div class="atom_num" ><span>19</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(248,215,119)">
+                        <div class="atom_wght"><span>85.468</span></div>
+							<div class="el">Rb</div>
+                            <div class="atom_num" ><span>37</span></div> 
+                    </div>
+                    <div class="cell" style="background-color: rgb(248,215,119)">
+                        <div class="atom_wght"><span>132.91</span></div>
+							<div class="el">Cs</div>
+                            <div class="atom_num" ><span>55</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(248,215,119)">
+                        <div class="atom_wght"><span>[233]</span></div>
+							<div class="el">Fr</div>
+                            <div class="atom_num" ><span>87</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(255,254,130)">
+                        <div class="atom_wght"><span>9.0122</span></div>
+							<div class="el">Be</div>
+                            <div class="atom_num" ><span>4</span></div>                   
+                    </div>
+                    <div class="cell" style="background-color: rgb(255,254,130)">
+                        <div class="atom_wght"><span>24.305</span></div>
+							<div class="el">Mg</div>
+                            <div class="atom_num" ><span>12</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(255,254,130)">
+                        <div class="atom_wght"><span>40.078(4)</span></div>
+							<div class="el">Ca</div>
+                            <div class="atom_num" ><span>20</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(255,254,130)">
+                        <div class="atom_wght"><span>87.62</span></div>
+							<div class="el">Sr</div>
+                            <div class="atom_num" ><span>38</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(255,254,130)">
+                        <div class="atom_wght"><span>137.33</span></div>
+							<div class="el">Ba</div>
+                            <div class="atom_num" ><span>56</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(255,254,130)">
+                        <div class="atom_wght"><span>[226]</span></div>
+							<div class="el">Ra</div>
+                            <div class="atom_num" ><span>88</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>44.956</span></div>
+							<div class="el">Sc</div>
+                            <div class="atom_num" ><span>21</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>88.906</span></div>
+							<div class="el">Y</div>
+                            <div class="atom_num" ><span>39</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+                        <div class="atom_wght"><span>138.91</span></div>
+							<div class="el">La</div>
+                            <div class="atom_num" ><span>57</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+                        <div class="atom_wght"><span>[227]</span></div>
+							<div class="el">Ac</div>
+                            <div class="atom_num" ><span>89</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>47.867</span></div>
+							<div class="el">Ti</div>
+                            <div class="atom_num" ><span>22</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>91.224(2)</span></div>
+							<div class="el">Zr</div>
+                            <div class="atom_num" ><span>40</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>178.49(2)</span></div>
+							<div class="el">Hf</div>
+                            <div class="atom_num" ><span>72</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>[267]</span></div>
+							<div class="el">Rf</div>
+                            <div class="atom_num" ><span>104</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>50.942</span></div>
+							<div class="el">V</div>
+                            <div class="atom_num" ><span>23</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>92.224(4)</span></div>
+							<div class="el">Nb</div>
+                            <div class="atom_num" ><span>41</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>180.95</span></div>
+							<div class="el">Ta</div>
+                            <div class="atom_num" ><span>73</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>[268]</span></div>
+							<div class="el">Db</div>
+                            <div class="atom_num" ><span>105</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>51.996</span></div>
+							<div class="el">Cr</div>
+                            <div class="atom_num" ><span>24</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>95.95</span></div>
+							<div class="el">Mo</div>
+                            <div class="atom_num" ><span>42</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>183.84</span></div>
+							<div class="el">W</div>
+                            <div class="atom_num" ><span>74</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>[269]</span></div>
+							<div class="el">Sg</div>
+                            <div class="atom_num" ><span>106</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>54.938</span></div>
+							<div class="el">Mn</div>
+                            <div class="atom_num" ><span>25</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>98</span></div>
+							<div class="el">Tc</div>
+                            <div class="atom_num" ><span>43</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>186.21</span></div>
+							<div class="el">Re</div>
+                            <div class="atom_num" ><span>75</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>[270]</span></div>
+							<div class="el">Bh</div>
+                            <div class="atom_num" ><span>107</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>55.845(2)</span></div>
+							<div class="el">Fe</div>
+                            <div class="atom_num" ><span>26</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>101.07(2)</span></div>
+							<div class="el">Ru</div>
+                            <div class="atom_num" ><span>44</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>190.23(3)</span></div>
+							<div class="el">Os</div>
+                            <div class="atom_num" ><span>76</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>[270]</span></div>
+							<div class="el">Hs</div>
+                            <div class="atom_num" ><span>108</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>58.933</span></div>
+							<div class="el">Co</div>
+                            <div class="atom_num" ><span>27</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>102.91</span></div>
+							<div class="el">Rh</div>
+                            <div class="atom_num" ><span>45</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>192.22</span></div>
+							<div class="el">Ir</div>
+                            <div class="atom_num" ><span>77</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(227,227,227)">
+                        <div class="atom_wght"><span>[278]</span></div>
+							<div class="el">Mt</div>
+                            <div class="atom_num" ><span>109</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>58.693</span></div>
+							<div class="el">Ni</div>
+                            <div class="atom_num" ><span>28</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>106.42</span></div>
+							<div class="el">Pd</div>
+                           <div class="atom_num" ><span>46</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>195.08</span></div>
+							<div class="el">Pt</div>
+                            <div class="atom_num" ><span>78</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(227,227,227)">
+                        <div class="atom_wght"><span>[281]</span></div>
+							<div class="el">Ds</div>
+                            <div class="atom_num" ><span>110</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>63.546(3)</span></div>
+							<div class="el">Cu</div>
+                            <div class="atom_num" ><span>29</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>107.87</span></div>
+							<div class="el">Ag</div>
+                            <div class="atom_num" ><span>47</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(224,202,202)">
+                        <div class="atom_wght"><span>196.87</span></div>
+							<div class="el">Au</div>
+                            <div class="atom_num" ><span>79</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(227,227,227)">
+                        <div class="atom_wght"><span>[282]</span></div>
+							<div class="el">Rg</div>
+                            <div class="atom_num" ><span>111</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+                        <div class="atom_wght"><span>65.38(2)</span></div>
+							<div class="el">Zn</div>
+                            <div class="atom_num" ><span>30</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+                        <div class="atom_wght"><span>112.41</span></div>
+							<div class="el">Cd</div>
+                            <div class="atom_num" ><span>48</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+                        <div class="atom_wght"><span>200.59</span></div>
+							<div class="el">Hg</div>
+                            <div class="atom_num" ><span>80</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+                        <div class="atom_wght"><span>[285]</span></div>
+							<div class="el">Cn</div>
+                            <div class="atom_num" ><span>112</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(166,225,164)">
+                        <div class="atom_wght"><span>10.81</span></div>
+							<div class="el">B</div>
+                            <div class="atom_num" ><span>5</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+							<div class="atom_wght"><span>26.982</span></div>
+							<div class="el">Al</div>
+                            <div class="atom_num" ><span>13</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+							<div class="atom_wght"><span>69.723</span></div>
+							<div class="el">Ga</div>
+                           <div class="atom_num" ><span>31</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+							<div class="atom_wght"><span>114.82</span></div>
+							<div class="el">In</div>
+                            <div class="atom_num" ><span>49</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+							<div class="atom_wght"><span>204.38</span></div>
+							<div class="el">Tl</div>
+                            <div class="atom_num" ><span>81</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(227,227,227)">
+							<div class="atom_wght"><span>[286]</span></div>
+							<div class="el">Nh</div>   
+                            <div class="atom_num" ><span>113</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(149,251,114)">
+							<div class="atom_wght"><span>12.011</span></div>
+							<div class="el">C</div>
+                            <div class="atom_num" ><span>6</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(166,225,164)">
+							<div class="atom_wght"><span>28.085</span></div>
+							<div class="el">Si</div>
+                            <div class="atom_num" ><span>14</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(166,225,164)">
+							<div class="atom_wght"><span>72.630(8)</span></div>
+							<div class="el">Ge</div>
+                            <div class="atom_num" ><span>32</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+							<div class="atom_wght"><span>118.71</span></div>
+							<div class="el">Sn</div>
+                            <div class="atom_num" ><span>50</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+							<div class="atom_wght"><span>207.2</span></div>
+							<div class="el">Pb</div>
+                            <div class="atom_num" ><span>82</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(227,227,227)">
+							<div class="atom_wght"><span>[286]</span></div>
+							<div class="el">Fl</div>
+                            <div class="atom_num" ><span>114</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(149,251,114)">
+							<div class="atom_wght"><span>14.007</span></div>
+							<div class="el">N</div>
+                            <div class="atom_num" ><span>7</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(149,251,114)">
+							<div class="atom_wght"><span>30.974</span></div>
+							<div class="el">P</div>
+                            <div class="atom_num" ><span>15</span></div>
+
+                    </div>
+                    <div class="cell" style="background-color: rgb(166,225,164)">
+							<div class="atom_wght"><span>74.922</span></div>
+							<div class="el">As</div>
+                            <div class="atom_num" ><span>33</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(166,225,164)">
+							<div class="atom_wght"><span>121.76</span></div>
+							<div class="el">Sb</div>
+                            <div class="atom_num" ><span>51</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+							<div class="atom_wght"><span>208.98</span></div>
+							<div class="el">Bi</div>
+                            <div class="atom_num" ><span>83</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(227,227,227)">
+							<div class="atom_wght"><span>[290]</span></div>
+							<div class="el">Mc</div>
+                            <div class="atom_num" ><span>115</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(149,251,114)">
+							<div class="atom_wght"><span>15.999</span></div>
+							<div class="el">O</div>
+                            <div class="atom_num" ><span>8</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(149,251,114)">
+							<div class="atom_wght"><span>32.06</span></div>
+							<div class="el">S</div>
+                            <div class="atom_num" ><span>16</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(149,251,114)">
+							<div class="atom_wght"><span>78.971(8)</span></div>
+							<div class="el">Se</div>
+                             <div class="atom_num" ><span>34</span></div>   
+                    </div>
+                    <div class="cell" style="background-color: rgb(166,225,164)">
+							<div class="atom_wght"><span>127.60(3)</span></div>
+							<div class="el">Te</div>
+                            <div class="atom_num" ><span>52</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(184,225,214)">
+							<div class="atom_wght"><span>[209]</span></div>
+							<div class="el">Po</div>
+                            <div class="atom_num" ><span>84</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(227,227,227)">
+							<div class="atom_wght"><span>[293]</span></div>
+							<div class="el">Lv</div>
+                            <div class="atom_num" ><span>116</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(149,251,114)">
+							<div class="atom_wght"><span>18.998</span></div>
+							<div class="el">F</div>
+                            <div class="atom_num" ><span>9</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(149,251,114)">
+							<div class="atom_wght"><span>35.45</span></div>
+							<div class="el">Cl</div>
+                            <div class="atom_num" ><span>17</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(149,251,114)">
+							<div class="atom_wght"><span>79.904</span></div>
+							<div class="el">Br</div>
+                            <div class="atom_num" ><span>35</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(149,251,114)">
+							<div class="atom_wght"><span>126.90</span></div>
+							<div class="el">I</div>
+                            <div class="atom_num" ><span>53</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(166,225,164)">
+							<div class="atom_wght"><span>[210]</span></div>
+							<div class="el">At</div>
+                            <div class="atom_num" ><span>85</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(227,227,227)">
+							<div class="atom_wght"><span>[294]</span></div>
+							<div class="el">Ts</div>
+                            <div class="atom_num" ><span>117</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(158,211,251)">
+							<div class="atom_wght"><span>4.0026</span></div>
+							<div class="el">He</div>
+                            <div class="atom_num" ><span>2</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(158,211,251)">
+							<div class="atom_wght"><span>20.180</span></div>
+							<div class="el">Ne</div>
+                            <div class="atom_num" ><span>10</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(158,211,251)">
+							<div class="atom_wght"><span>39.948</span></div>
+							<div class="el">Ar</div>
+                            <div class="atom_num" ><span>18</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(158,211,251)">
+							<div class="atom_wght"><span>83.798</span></div>
+							<div class="el">Kr</div>
+                            <div class="atom_num" ><span>36</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(158,211,251)">
+							<div class="atom_wght"><span>131.29</span></div>
+							<div class="el">Xe</div>
+                            <div class="atom_num" ><span>54</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(158,211,251)">
+							<div class="atom_wght"><span>[222]</span></div>
+							<div class="el">Rn</div>
+                            <div class="atom_num" ><span>86</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(227,227,227)">
+							<div class="atom_wght"><span>[294]</span></div>
+							<div class="el">Og</div>
+                            <div class="atom_num" ><span>118</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="pannel">
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>140.12</span></div>
+							<div class="el">Ce</div>
+                            <div class="atom_num" ><span>58</span></div>    
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>232.04</span></div>
+							<div class="el">Th</div>
+                            <div class="atom_num" ><span>90</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>140.91</span></div>
+							<div class="el">Pr</div>
+                            <div class="atom_num" ><span>59</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>231.04</span></div>
+							<div class="el">Pa</div>
+                            <div class="atom_num" ><span>91</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>144.24</span></div>
+							<div class="el">Nd</div>
+                            <div class="atom_num" ><span>60</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>238.03</span></div>
+							<div class="el">U</div>
+                            <div class="atom_num" ><span>92</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>[145]</span></div>
+							<div class="el">Pm</div>
+                            <div class="atom_num" ><span>61</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>[237]</span></div>
+							<div class="el">Np</div>
+                            <div class="atom_num" ><span>93</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>150.36(2)</span></div>
+							<div class="el">Sm</div>
+                            <div class="atom_num" ><span>62</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>[244]</span></div>
+							<div class="el">Pu</div>
+                            <div class="atom_num" ><span>94</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>151.96</span></div>
+							<div class="el">Eu</div>
+                            <div class="atom_num" ><span>63</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>[243]</span></div>
+							<div class="el">Am</div>
+                            <div class="atom_num" ><span>95</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>157.25(3)</span></div>
+							<div class="el">Gd</div>
+                            <div class="atom_num" ><span>64</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>[247]</span></div>
+							<div class="el">Cm</div>
+                            <div class="atom_num" ><span>96</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>158.93</span></div>
+							<div class="el">Tb</div>
+                            <div class="atom_num" ><span>65</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>[247]</span></div>
+							<div class="el">Bk</div>
+                            <div class="atom_num" ><span>97</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>162.50</span></div>
+							<div class="el">Dy</div>
+                            <div class="atom_num" ><span>66</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>[251]</span></div>
+							<div class="el">Cf</div>
+                            <div class="atom_num" ><span>98</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>164.93</span></div>
+							<div class="el">Ho</div>
+                            <div class="atom_num" ><span>67</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>[252]</span></div>
+							<div class="el">Es</div>
+                            <div class="atom_num" ><span>99</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>167.26</span></div>
+							<div class="el">Er</div>
+                            <div class="atom_num" ><span>68</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>[257]</span></div>
+							<div class="el">Fm</div>
+                            <div class="atom_num" ><span>100</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>168.93</span></div>
+							<div class="el">Tm</div>
+                            <div class="atom_num" ><span>69</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>[258]</span></div>
+							<div class="el">Md</div>
+                            <div class="atom_num" ><span>101</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>173.05</span></div>
+							<div class="el">Yb</div>
+                            <div class="atom_num" ><span>70</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>[259]</span></div>
+							<div class="el">No</div>
+                            <div class="atom_num" ><span>102</span></div>
+                    </div>
+                </div>
+                <div class="p_coloumn">
+                    <div class="cell" style="background-color: rgb(246,202,177)">
+							<div class="atom_wght"><span>174.97</span></div>
+							<div class="el">Lu</div>
+                            <div class="atom_num" ><span>71</span></div>
+                    </div>
+                    <div class="cell" style="background-color: rgb(234,203,226)">
+							<div class="atom_wght"><span>[266]</span></div>
+							<div class="el">Lr</div>
+                            <div class="atom_num" ><span>103</span></div>
+                    </div>
+                </div>
+			</div>
+			<img src="Element Chart.png" alt="Element Key">
+        </div>
+    </body>
+</html>

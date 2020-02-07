@@ -1,0 +1,63 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+<body>
+    <!-- 
+    m_click when mouse click function
+    m_off when hover over and mouse leaves balloon -->
+    <div id="balloon" onclick="m_click()" onmouseout="m_off()"></div>
+</body>
+</html>
+<script>
+    // Getting element using id inside div
+    var bloon = document.getElementById("balloon");
+    bloon.style.background = "red";
+    
+    function m_click ()
+    {
+        var off_set = bloon.offsetWidth + 10;
+        bloon.style.height = off_set + "px";
+        bloon.style.width = off_set + "px";
+        if (off_set > 420)
+        {
+            bloon.style.height = "200px";
+            bloon.style.width = "200px";
+        }
+        if (bloon.style.background == "red")
+            bloon.style.background = "green";
+        else if (bloon.style.background == "green")
+            bloon.style.background = "blue";
+        else if (bloon.style.background == "blue")
+            bloon.style.background = "red";
+    }
+    function m_off()
+    {
+        var down_set = bloon.offsetWidth - 5;
+        bloon.style.height = down_set + "px";
+        bloon.style.width = down_set + "px";
+        if (down_set < 200)
+        {
+            bloon.style.height = "200px";
+            bloon.style.width = "200px";
+        }
+        if (bloon.style.background == "red")
+            bloon.style.background = "blue";
+        else if (bloon.style.background == "blue")
+            bloon.style.background = "green";
+        else if (bloon.style.background == "green")
+            bloon.style.background = "red";
+    }
+</script>
+<style>
+    /* Using # becuse refering to the id ballon, not class */
+    #balloon{
+        background: red;
+        width: 200px;
+        height: 200px;
+        border-radius: 100%;
+        position: absolute;
+        left: 50%;
+    }
+</style>
