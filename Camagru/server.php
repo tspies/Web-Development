@@ -55,7 +55,7 @@
                 $password = hash('whirlpool', str_rot13($password));
                 echo $password;
                 $token = hash('whirlpool', str_rot13($username));
-                $link = "http://localhost:8080/Web-Development/Camagru/email_auth.php?token=".$token;
+                $link = "http://localhost:8888/Web-Development/Camagru/email_auth.php?token=".$token;
                 $query = "INSERT INTO camagru.user_data (username, email, `password`, notifications, token)
                             VALUES ('$username', '$email', '$password', '$Notifications', '$token')";
 				$dbc->exec($query);
@@ -133,7 +133,7 @@
 				//Generating Random Token
 				$raw_string = rand(10, 100);
 				$reset_token = hash('whirlpool', str_rot13($raw_string));
-				$link = "http://localhost:8080/Web-Development/Camagru/reset_password.php?reset_token=".$reset_token;
+				$link = "http://localhost:8888/Web-Development/Camagru/reset_password.php?reset_token=".$reset_token;
 
 				// Update database with new token
 				$query = $dbc->prepare("UPDATE camagru.user_data SET token = :new_token");

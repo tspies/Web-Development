@@ -1,6 +1,7 @@
 <?php
 	ini_set('display_errors', 1);
 
+
 // Creating Database
 try
 {
@@ -17,6 +18,30 @@ catch(PDOException $err)
 
 require('database.php');
 
+// Creating User Data Table
+try
+ {
+	$query = $dbc->prepare("CREATE TABLE IF NOT EXISTS `user_data` (
+		`user_id` int(10) NOT NULL AUTO_INCREMENT,
+		`username` varchar(20) NOT NULL,
+		`password` varchar(260) NOT NULL,
+		`email` varchar(40) NOT NULL,
+		`notifications` int(1) NOT NULL,
+		`verified` int(1) DEFAULT NULL,
+		`token` varchar(260) NOT NULL,
+		PRIMARY KEY (`user_id`),
+  		UNIQUE KEY `username` (`username`) USING BTREE,
+  		KEY `email` (`email`) USING BTREE
+		  );");
+	$query->execute();
+	echo "User Data Table Created!\n";
+	header("Location: ../index.php");
+ }
+ catch(PDOException $err)
+{
+	echo $err->getMessage();
+}
+
 //Creating Comments Table
 try
  {
@@ -25,7 +50,8 @@ try
 		`pic_id` int(11) NOT NULL,
 		`user_tag` varchar(50) NOT NULL,
 		`comment_id` int(255) NOT NULL  AUTO_INCREMENT,
-		PRIMARY KEY (`comment_id`)
+		PRIMARY KEY (`comment_id`),
+		FOREIGN KEY ('user_id') REFERENCES user_data('user_id')
 	  );");
 	$query->execute();
 	echo "Comments Table created!\n";
@@ -43,34 +69,11 @@ try
 		`picture` longblob NOT NULL,
 		`user_tag` varchar(50) NOT NULL,
 		`likes` int(255) NOT NULL,
-		PRIMARY KEY (`id`)
+		PRIMARY KEY (`id`),
+		FOREIGN KEY ('user_id') REFERENCES user_data('user_id')
 	  );");
 	$query->execute();
 	echo "User Pictures Table Created!\n";
- }
- catch(PDOException $err)
-{
-	echo $err->getMessage();
-}
-
-// Creating User Data Table
-try
- {
-	$query = $dbc->prepare("CREATE TABLE IF NOT EXISTS `user_data` (
-		`id` int(10) NOT NULL AUTO_INCREMENT,
-		`username` varchar(20) NOT NULL,
-		`password` varchar(260) NOT NULL,
-		`email` varchar(40) NOT NULL,
-		`notifications` int(1) NOT NULL,
-		`verified` int(1) DEFAULT NULL,
-		`token` varchar(260) NOT NULL,
-		PRIMARY KEY (`id`),
-  		UNIQUE KEY `username` (`username`) USING BTREE,
-  		KEY `email` (`email`) USING BTREE
-		  );");
-	$query->execute();
-	echo "User Data Table Created!\n";
-	header("Location: ../index.php");
  }
  catch(PDOException $err)
 {

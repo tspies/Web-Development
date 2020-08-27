@@ -112,11 +112,11 @@
 				if ($_GET['p'] > 1)
 				{
 					$previous = $nextpage - 2;
-					echo '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=' . $previous . '" style="margin: 8px;">Previous</a>';
+					echo '<a href="http://localhost:8888/Web-Development/Camagru/gallary.php?p=' . $previous . '" style="margin: 8px;">Previous</a>';
 				}
 				else
-					echo '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=1" style="margin: 8px;">Previous</a>';
-				$link = '<a href="http://localhost:8080/Web-Development/Camagru/gallary.php?p=' . $nextpage . '">Next</a>';
+					echo '<a href="http://localhost:8888/Web-Development/Camagru/gallary.php?p=1" style="margin: 8px;">Previous</a>';
+				$link = '<a href="http://localhost:8888/Web-Development/Camagru/gallary.php?p=' . $nextpage . '">Next</a>';
 				echo $link;
 				echo '</div>'
 			?>
