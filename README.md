@@ -26,7 +26,8 @@ Download the right MAMP for your Operating System
 
 ## Code Breakdown
   - Back-end Technologies
-    - Flask
+    - MAMP
+    - PHP
   - Front-end Techanologies
     - HTML
     - CSS
