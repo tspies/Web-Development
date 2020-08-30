@@ -45,3 +45,12 @@ Download the right MAMP for your Operating System
     - The rest of the .php files are found in the root of the project.
 ## Testing
   - https://github.com/wethinkcode-students/corrections_42_curriculum/blob/master/camagru.markingsheet.pdf
+  
+## Summarized Test Outline
+  - Create a User
+  - User login / Authentication
+  - Photo Capture
+  - Gallery View
+  - User Profile / Preferences
+  - Delete only Users Pictures
+
